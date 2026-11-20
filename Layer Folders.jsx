@@ -1,10 +1,10 @@
 // Layer Folders - dockable panel that fakes timeline layer folders with header null layers.
-// Header: guide null, comment LF_HEADER, name "▼ NAME" (open) / "▶ NAME" (collapsed).
+// Header: guide null, comment LF_HEADER, name "\u25BC NAME" (open) / "\u25B6 NAME" (collapsed).
 // Members: all layers below a header down to the next header. ExtendScript (ES3).
 (function (thisObj) {
-    var LF_VERSION = "0.1.0"; // must match VERSION file
+    var LF_VERSION = "0.1.1"; // must match VERSION file
     var TAG = "LF_HEADER";
-    var OPEN = "▼ ", CLOSED = "▶ ";
+    var OPEN = "\u25BC ", CLOSED = "\u25B6 ";
     var LABELS = ["0 None", "1 Red", "2 Yellow", "3 Aqua", "4 Pink", "5 Lavender", "6 Peach", "7 Sea Foam",
         "8 Blue", "9 Green", "10 Purple", "11 Orange", "12 Brown", "13 Fuchsia", "14 Cyan", "15 Sandstone", "16 Dark Green"];
 
@@ -24,10 +24,10 @@
         try { c = l.comment; } catch (e) {}
         if (c === TAG) { return true; }
         var ch = l.name.charAt(0);
-        return ch === "▼" || ch === "▶";
+        return ch === "\u25BC" || ch === "\u25B6";
     }
-    function isCollapsed(h) { return h.name.charAt(0) === "▶"; }
-    function baseName(h) { return h.name.replace(/^[▼▶]\s*/, ""); }
+    function isCollapsed(h) { return h.name.charAt(0) === "\u25B6"; }
+    function baseName(h) { return h.name.replace(/^[\u25BC\u25B6]\s*/, ""); }
     function setState(h, collapsed) { h.name = (collapsed ? CLOSED : OPEN) + baseName(h); }
 
     function headers(comp) {

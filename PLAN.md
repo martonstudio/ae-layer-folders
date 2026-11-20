@@ -1,6 +1,6 @@
 # PLAN
 
-Finish line: every item below passes in AE 27 on the user's machine.
+Finish line: every item below passes in AE 2024 and AE 2027 on the user's machine.
 - [ ] Panel appears under Window after AE restart and docks.
 - [ ] New folder from selection inserts header above topmost and keeps relative order.
 - [ ] Collapse/Expand per folder and all; other folders untouched; Hide Shy follows state.
@@ -13,6 +13,7 @@ Remaining steps
 - Bump VERSION and LF_VERSION in the .jsx together on every change.
 
 Constraints
+- Must run in AE 2024 (24.x) and every later version: no API newer than 24.0, and the .jsx stays plain ASCII (non-ASCII as \u escapes).
 - ExtendScript ES3 only: no let/const, arrows, forEach/map/indexOf.
 - Collapse/Expand overwrites members' own shy flags.
 - Headers count as layers in index-based expressions (index - 1 etc.).
